@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo搭建参考汇总</title>
+    <url>/2022/07/05/hexo%E6%96%87%E7%AB%A0%E5%86%99%E5%85%A5%E6%8C%87%E5%8D%97/</url>
+    <content><![CDATA[<p>这篇文章记录了我在搭建个人博客过程中遇到的一些问题及对应的参考资料，防止踩过的坑重复踩，所以记录在这里。</p>
+<h3 id="1-一些较好的个人网站示例"><a href="#1-一些较好的个人网站示例" class="headerlink" title="1 一些较好的个人网站示例"></a>1 一些较好的个人网站示例</h3><p><a href="https://yafine-blog.cn/posts/4ab2.html">yafine-blog</a><br><a href="https://sunhwee.com/posts/6e8839eb.html">洪卫的博客</a><br><a href="https://sitoi.cn/">Sitoi的blog</a> </p>
+<h3 id="2-Markdown-用于生成博客文章"><a href="#2-Markdown-用于生成博客文章" class="headerlink" title="2 Markdown 用于生成博客文章"></a>2 Markdown 用于生成博客文章</h3><p>对应语法 <code>hexo new post &quot;文章名&quot;</code><br><a href="https://markdown.com.cn/basic-syntax/">Markdown语法大全</a></p>
+<h3 id="3-hexo完全搭建指南"><a href="#3-hexo完全搭建指南" class="headerlink" title="3 hexo完全搭建指南"></a>3 hexo完全搭建指南</h3><p><a href="https://blog.justlovesmile.top/posts/c8972b63.html">参考教程justlovesmile</a></p>
+<p>构建模块所需要学习的几个模块如下: </p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>部署工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>环境部署工具</td>
+<td>node.js(npm为node.js的包管理工具)、git、github账号及仓库搭建、hexo及推送</td>
+</tr>
+<tr>
+<td>外链</td>
+<td>云图片存储：七牛云、域名申请：阿里云</td>
+</tr>
+<tr>
+<td>hexo基础</td>
+<td>见justlovesmile参考教程</td>
+</tr>
+</tbody></table>
+<h3 id="4-常用基本指令"><a href="#4-常用基本指令" class="headerlink" title="4 常用基本指令"></a>4 常用基本指令</h3><p>新建文章 <code>hexo new post &#39;文章名称&#39;</code><br>在_post生成对应的md文件<br>新建页面 <code>hexo new page &#39;页面名字&#39;</code><br>会在source文件中生成对应名称的文件夹</p>
+<p>清除缓存 <code>hexo clean</code><br>生成静态页面 <code>hexo g</code><br>本地端口 <code>hexo s</code><br>部署 <code>hexo d</code></p>
+<p>更改主题 <code>cd /e/hexo/ git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</code></p>
+<h3 id="5-绑定域名"><a href="#5-绑定域名" class="headerlink" title="5 绑定域名"></a>5 绑定域名</h3><p>我们需要将网站内容绑定到自己的域名，需要如下几个操作：</p>
+<h4 id="5-0将hexo中个人内容推送到github"><a href="#5-0将hexo中个人内容推送到github" class="headerlink" title="5.0将hexo中个人内容推送到github"></a>5.0将hexo中个人内容推送到github</h4><p>5.0.1配置个人信息<br><code>git config --global user.name &quot;XXXX&quot;</code>github注册时用户名<br><code>git config --global user.email &quot;XXXXXXXXX@XXX.com&quot;</code>github注册时邮箱<br>5.0.2生成shh密钥,会在C盘&#x2F;用户&#x2F;这个文件夹下生成一个.ssh文件夹，该文件夹下会生成一个.pub的密钥文件<br><code>ssh-keygen -t rsa -C &quot;XXXXXXXXX@XXX.com&quot;</code><br>5.0.3查看ssh密钥内容<br><code>cat ~/.ssh/id_rsa.pub</code><br>5.0.4在github个人设置里添加对应的<code>ssh keys</code><br>5.0.5修改hexo根目录下_config.yml文件中deploy部分，添加上之前的ssh：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: </span><br><span class="line">	github: git@github.com:Justlovesmile/Justlovesmile.github.io.git</span><br><span class="line">  branch: master`</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-1将域名指向github-io域名"><a href="#5-1将域名指向github-io域名" class="headerlink" title="5.1将域名指向github.io域名"></a>5.1将域名指向github.io域名</h4><p>找到自己购买的域名，点击解析，构建记录类型CNAME，记录值为<code>你的用户名.github.io</code>的记录</p>
+<h4 id="5-2github对应仓库中，修改解析域名"><a href="#5-2github对应仓库中，修改解析域名" class="headerlink" title="5.2github对应仓库中，修改解析域名"></a>5.2github对应仓库中，修改解析域名</h4><p>github仓库中 settings-github_pages-custom_domian,填入自己的域名</p>
+]]></content>
+      <categories>
+        <category>博客维护</category>
+      </categories>
+      <tags>
+        <tag>个人网站搭建</tag>
+        <tag>hexo教程，Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>first test</title>
     <url>/2022/07/04/first-test/</url>
     <content><![CDATA[]]></content>
